@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LogUser index{% endblock %}
+
+{% block body %}
+    <h1>{{ messageService }}</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FechaCrea</th>
+                <th>FechaModifica</th>
+                <th>IpUsuario</th>
+                <th>UserAgent</th>
+                <th>CodPais</th>
+                <th>ClaveEvent</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for log_user in log_users %}
+            <tr>
+                <td>{{ log_user.id }}</td>
+                <td>{{ log_user.fechaCrea ? log_user.fechaCrea|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ log_user.fechaModifica ? log_user.fechaModifica|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ log_user.ipUsuario }}</td>
+                <td>{{ log_user.userAgent }}</td>
+                <td>{{ log_user.codPais }}</td>
+                <td>{{ log_user.claveEvent }}</td>
+               
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   
+
+{% endblock %}
